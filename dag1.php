@@ -7,8 +7,7 @@ $ans2 = 0;
 
 // functie voor antwoord vraag 1
 function verkrijgHoevaakHuidigeRegelGroterIsDanVorige($lijst, $ans) {
-    $indexAns1 = 0;
-    foreach($lijst as $regel) {
+    foreach($lijst as $indexAns1 => $regel) {
         $vorigeLijnBestaat = array_key_exists($indexAns1 -1, $lijst);
         $vorigeLijnBestaat ? $regel > $lijst[$indexAns1 - 1] ? $ans++ : '' : '';
         $indexAns1 ++;
@@ -19,10 +18,10 @@ function verkrijgHoevaakHuidigeRegelGroterIsDanVorige($lijst, $ans) {
 
 // functie voor antwoord vraag 2
 function verkrijgHoevaakHuidigeVerzamelingGroterIsDanVorige($lijst, $ans) {
-    $indexAns2 = 0;
+    //$indexAns2 = 0;
     $sumArray = array();
 
-    foreach($lijst as $regel) {
+    foreach($lijst as $indexAns2 => $regel) {
         $sum = 0;
 
         $volgende2LijnenBestaan = array_key_exists($indexAns2 +2, $lijst);
