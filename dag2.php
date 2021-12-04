@@ -8,6 +8,8 @@ $ans2 = 0;
 $hor = 0;
 $depth = 0;
 
+$horEnDepth = array();
+
 // Bereken horizontale positie
 function berekenHor($lijst, $hor) {
     
@@ -35,10 +37,35 @@ function berekenDepth($lijst, $depth) {
     return $depth;
 }
 
+// bereken hor en depth binnen de functie en geef ze terug als array.
+function berekenHorEnDepth($lijst, $horEnDepth) {
+    $aim = 0;
+    $hor = 0;
+    $depth = 0;
+
+    foreach($lijst as $index => $regel) {
+        $splitRegel = explode(' ', $regel);
+        $woord = $splitRegel[0];
+        $getal = $splitRegel[1];
+
+        str_contains($regel, 'up') ? $aim -= $getal : '';
+        str_contains($regel, 'down') ? $aim += $getal : '';
+        $aim < 0 ? $aim = 0: '';
+        str_contains($regel, 'forward') ? ($hor += $getal) & ($depth += ($aim * $getal)) : '';
+    }
+
+    $horEnDepth[] = $hor;
+    $horEnDepth[] = $depth;
+    return $horEnDepth;
+}
+
 $hor = berekenHor($lijst, $hor);
 $depth = berekenDepth($lijst, $depth);
 
+$horEnDepth = berekenHorEnDepth($lijst, $horEnDepth);
+
 $ans1 = $hor * $depth;
+$ans2 = $horEnDepth[0] * $horEnDepth[1];
 
 echo "Antwoord op vraag 1: $ans1";
 echo "</br>";
