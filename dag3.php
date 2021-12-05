@@ -8,8 +8,6 @@ $ans2 = 0;
 
 function bepaalEpsilonEnGammaEnVermenigVuldigDeze($lijst, $ans) {
     $aantalChars = strlen($lijst[0]);
-    $epsilonArray = array();
-    $gammaArray = array();
 
     $epsilonString = '';
     $gammaString = '';
@@ -23,12 +21,8 @@ function bepaalEpsilonEnGammaEnVermenigVuldigDeze($lijst, $ans) {
 
             $splitWoord[$i] == 0 ? ($nul += 1) : ($een += 1);
         }
-        $nul > $een ? ($epsilonArray[] = 0) & ($gammaArray[] = 1) : ($epsilonArray[] = 1) & ($gammaArray[] = 0);
+        $nul > $een ? ($epsilonString .= 0) & ($gammaString .= 1) : ($epsilonString .= 1) & ($gammaString .= 0);
 
-        $epsilonString .= $epsilonArray[$i];
-        $gammaString .= $gammaArray[$i];
-
-        echo $epsilonString;
         $nul = 0;
         $een = 0;
     }
